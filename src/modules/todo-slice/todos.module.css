@@ -1,0 +1,36 @@
+.todo__list {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+}
+.todo__item {
+	display: flex;
+	gap: 50px;
+	padding: 5px 10px;
+	border: 1px solid black;
+}
+.delete__btn {
+	padding: 4px;
+	font-size: 12px;
+	border: 1px solid black;
+	transition: 0.3s all;
+}
+.delete__btn:hover {
+	background-color: red;
+	color: white;
+}
+.action__block {
+	display: flex;
+	gap: 10px;
+}
+.add__form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+.todo__input {
+	font-size: 16px;
+	padding: 10px;
+	outline: none;
+	border: 1px solid #000;
+}
