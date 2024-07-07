@@ -1,4 +1,5 @@
 import { useAppDispatch } from '../../store/store';
+import { addTodoAction } from './todo.slice';
 import styles from './todos.module.css';
 import { FormEvent, useState } from 'react';
 
@@ -9,12 +10,7 @@ const AddTodo = () => {
 	const handleClick = (e: FormEvent) => {
 		e.preventDefault();
 
-		dispatch({
-			type: 'addTodo',
-			payload: {
-				text: text
-			}
-		});
+		dispatch(addTodoAction({ text }));
 
 		setText('');
 	};

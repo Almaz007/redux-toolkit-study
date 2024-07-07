@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../store/store';
-import Todo from './TodoItem';
+import TodoItem from './TodoItem';
 import styles from './todos.module.css';
 
 const TodosList = () => {
@@ -9,7 +9,7 @@ const TodosList = () => {
 		<div className={styles['todo__list']}>
 			{Object.keys(todos).map(todoId => {
 				const todo = todos[todoId];
-				return <Todo key={todoId} todo={todo} />;
+				return <TodoItem key={todoId} todo={todo} />;
 			})}
 		</div>
 	);

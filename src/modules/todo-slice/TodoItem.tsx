@@ -1,9 +1,11 @@
 import styles from './todos.module.css';
-import { RemoveTodoAction, Todo } from './todo.slice';
+import { removeTodoAction, Todo, updateTodoAction } from './todo.slice';
 import { useAppDispatch } from '../../store/store';
-import { UpdateTodoAction } from './todo.slice';
-const TodoItem = ({ todo }: { todo: Todo }) => {
+import { memo } from 'react';
+
+const TodoItem = memo(({ todo }: { todo: Todo }) => {
 	const dispatch = useAppDispatch();
+	console.log('render ' + todo.id);
 	return (
 		<div className={styles['todo__item']}>
 			<p className={styles['todo__text']}>{todo.text}</p>
@@ -11,24 +13,10 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
 				<input
 					type='checkbox'
 					checked={todo.completed}
-					onChange={() =>
-						dispatch({
-							type: 'updateTodo',
-							payload: {
-								todoId: todo.id
-							}
-						} satisfies UpdateTodoAction)
-					}
+					onChange={() => dispatch(updateTodoAction({ todoId: todo.id }))}
 				/>
 				<button
-					onClick={() =>
-						dispatch({
-							type: 'removeTodo',
-							payload: {
-								todoId: todo.id
-							}
-						} satisfies RemoveTodoAction)
-					}
+					onClick={() => dispatch(removeTodoAction({ todoId: todo.id }))}
 					className={styles['delete__btn']}
 				>
 					Удалить
@@ -36,6 +24,5 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
 			</div>
 		</div>
 	);
-};
-
+});
 export default TodoItem;
